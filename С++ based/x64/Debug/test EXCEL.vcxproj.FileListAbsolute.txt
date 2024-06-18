@@ -1,0 +1,2 @@
+C:\LAB\2wer\test EXCEL\x64\Debug\test EXCEL.exe
+C:\LAB\1 Course\Creative Project (C++)\AutoAttendanceRecord\2wer\test EXCEL\x64\Debug\test EXCEL.exe
