@@ -1,0 +1,29 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("loginForm");
+    const loginInput = document.getElementById("login");
+    const errorMessage = document.getElementById("error-message");
+
+    form.addEventListener("submit", function(event) {
+        if (!loginInput.value.includes("@")) {
+            errorMessage.textContent = "Неправильный формат логина. Логин должен содержать '@'.";
+            event.preventDefault();
+        }
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+
+    if (error) {
+        switch(error) {
+            case 'invalid_email':
+                errorMessage.textContent = "Неправильный формат логина. Логин должен содержать '@'.";
+                break;
+            case 'db_connection':
+                errorMessage.textContent = "Ошибка подключения к базе данных.";
+                break;
+            case 'invalid_login':
+                errorMessage.textContent = "Неверный логин или пароль.";
+                break;
+        }
+    }
+});

@@ -1,0 +1,11 @@
+CREATE DATABASE register_bd;
+USE register_bd;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(255) NOT NULL,
+    pass VARCHAR(255) NOT NULL
+);
+
+-- Вставьте пример пользователя с зашифрованным паролем
+INSERT INTO users (login, pass) VALUES ('user@example.com', PASSWORD('password123'));

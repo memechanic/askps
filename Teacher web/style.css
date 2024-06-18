@@ -1,0 +1,114 @@
+/* Глобальные стили для тела документа */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #444;
+    margin: 20px 0;
+}
+
+/* Контейнер формы */
+form, .content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Логотип */
+img {
+    margin-bottom: 20px;
+}
+
+/* Стили для полей ввода */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Стили для кнопки */
+.c-button {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #29bf46;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.c-button:hover {
+    background-color: #26963a;
+}
+
+.c-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(41, 191, 70, 0.4);
+}
+
+/* Обертка для кнопки входа и QR-кода */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Стили для QR-кода */
+.qr-code {
+    display: flex;
+    padding: 20px 0;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-code img {
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Стили для сообщения об ошибке */
+.error-message {
+    color: red;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Стили для таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}

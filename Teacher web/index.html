@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Отметка студентов</title>
+</head>
+<body>
+    <form id="loginForm" action="login.php" method="POST">
+        <img src="https://img.artlebedev.ru/tpu/tpu-logo.png" height="170" width="200" alt="Логотип ТПУ"/>
+        
+        <h1>Авторизация для отметки учащихся</h1>
+        
+        <div id="error-message" class="error-message"></div>
+        
+        <div>
+            <label>
+                Введите логин:
+                <input type="text" name="login" id="login" spellcheck="false" placeholder="aaa1@tpu.ru" required>
+            </label>
+        </div>
+        
+        <div>
+            <label>
+                Введите пароль:
+                <input type="password" name="pass" id="pass" spellcheck="false" placeholder="••••••" required>
+            </label>
+        </div>
+        
+        <div class="wrapper">
+            <button class="c-button" type="submit">Вход</button>
+        </div>
+    </form>
+
+    <script src="validation.js"></script>
+</body>
+</html>
