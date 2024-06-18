@@ -1,0 +1,72 @@
+<?php
+    
+// Получаем и фильтруем данные из формы
+$login = filter_var(trim($_POST['login']), FILTER_SANITIZE_STRING);
+$pass = filter_var(trim($_POST['pass']), FILTER_SANITIZE_STRING);
+$name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
+
+//Хеширование пароля
+$pass = md5($pass."hfufiidhf46575");
+
+// Настройки подключения к базе данных
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "main";
+
+// Создание соединения с базой данных
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Проверка подключения
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Запрос на получение значения qr_check из таблицы qr_synchronization
+$sql = "SELECT qr_check FROM qr_synchronization LIMIT 1";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Получение значения qr_check
+    $row = $result->fetch_assoc();
+    $qr_check = $row['qr_check'];
+
+    // Запрос на проверку совпадения значений в таблице people
+    $sql = "SELECT people_id FROM people WHERE login = ? AND password = ? AND fio = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $login, $pass, $name);
+    $stmt->execute();
+    $stmt->bind_result($student_id);
+
+    if ($stmt->fetch()) {
+        // Если все совпало, запись данных в таблицу 'attendance'
+        $sql = "INSERT INTO attendance (qr_check, student_id) VALUES (?, ?)";
+        $stmt_insert = $conn->prepare($sql);
+        $stmt_insert->bind_param("si", $qr_check, $student_id);
+
+        if ($stmt_insert->execute()) {
+            echo "Вы успешно отметились!.";
+        } else {
+            echo "Что-то пошло не так: " . $stmt_insert->error;
+        }
+
+        $stmt_insert->close();
+    } else {
+        echo "Извините, но вас нет в базе данных ТПУ.";
+    }
+
+    $stmt->close();
+} else {
+    echo "Данного QR-кода не существует!";
+}
+
+$conn->close();
+?>
+
+
+
+
+    $stmt->close();
+    $mysql->close();
+    header('Location: /');
+?>
